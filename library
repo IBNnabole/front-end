@@ -1,0 +1,52 @@
+all things we writle in console.log()
+console.log('Teaching the world how to code'.length) - print 30
+console.log('hello'.toUpperCase()); // Prints 'HELLO'
+console.log('Hey'.startsWith('H')); // Prints true
+console.log('    Remove whitespace   '.trim()); // Prints without space
+console.log(Math.random()); // Prints a random number between 0 and 1
+
+Math.floor(Math.random() * 50); - Math.floor()берет десятичное число и округляет до ближайшего целого числа.
+
+console.log(Math.floor(Math.random() * 50)); // Prints a random whole number between 0 and 50
+
+console.log(Math.ceil(43.8)); // prints the smallest integer greater than or equal to x.
+console.log(Number.isInteger(2017)); // проверяет целое ли число
+///////////////////////////////////////////////////////////////////////////
+
+var favoriteFood = 'pizza'; - переменная (хз пока, видимо ее нельзя редачиить)
+
+let meal = 'Enchiladas'; - эту переменную можно редачить
+console.log(meal); // Output: Enchiladas
+meal = 'Burrito';
+console.log(meal); // Output: Burrito
+
+const myName = 'Gilberto'; - константа, тут нечего сказать. Значение обязательно!
+console.log(myName); // Output: Gilberto
+
+let a = 10;
+a++;
+console.log(a); // Output: 11
+let b = 20;
+b--;
+console.log(b); // Output: 19
+
+let favoriteAnimal = 'cat';
+console.log('My favorite animal: ' + favoriteAnimal);
+
+let myName = 'Boris';
+let myCity = 'Kazan';
+console.log(`My name is ${myName}. My favorite city is ${myCity}`);
+
+const unknown1 = 'foo';
+console.log(typeof unknown1); // Output: string
+
+///////////////////////////////////////////////////////////////////////////////////////
+const Kelvin = 0; //line
+const celsius = Kelvin - 273; // line2
+
+let fahrenheit = celsius * (9/5) + 32; //line3
+fahrenheit = Math.floor(fahrenheit); // line4
+
+console.log(`The temperature is ${fahrenheit} degrees Fahrenheit.`);
+////////////////////////////////////////////////////////////////////////////////////////
+
