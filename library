@@ -50,3 +50,155 @@ fahrenheit = Math.floor(fahrenheit); // line4
 console.log(`The temperature is ${fahrenheit} degrees Fahrenheit.`);
 ////////////////////////////////////////////////////////////////////////////////////////
 
+let sale = true;
+sale = false;
+if(sale) {
+  console.log('Time to buy!');
+} else {
+  console.log('Time to wait for a sale.')
+}
+
+
+let hungerLevel = 7;
+if (hungerLevel > 7){
+  console.log('Time to eat!');
+} else {
+  console.log('We can eat later!');
+}
+
+&& - means AND
+if (stopLight === 'green' && pedestrians === 0) { 
+  console.log('Go!');
+} else {
+  console.log('Stop');
+}
+
+|| - means OR
+if (day === 'Saturday' || day === 'Sunday') {
+  console.log('Enjoy the weekend!');
+} else {
+  console.log('Do some work.');
+}
+
+! - means NOT
+let excited = true;
+console.log(!excited); // Prints false
+ 
+let sleepy = false;
+console.log(!sleepy); // Prints true
+
+///////////////////////
+let numberOfApples = 0;
+if (numberOfApples){
+   console.log('Let us eat apples!');
+} else {
+   console.log('No apples left!');
+}
+ 
+// Prints 'No apples left!'
+когда переменная = false
+1) 0
+2) Пустые строки вроде ""или''
+3) null которые представляют, когда нет никакой ценности
+4) undefined которые представляют, когда объявленной переменной не хватает значения
+5) NaN, или не число
+///////////////////////
+
+let tool = 'marker';
+
+let writingUtensil = tool || 'pen';
+if (tool) {
+  writingUtensil = tool;
+} else {
+  writingUtensil = 'pen';
+}
+
+console.log(`The ${writingUtensil} is mightier than the sword.`);
+/////////////////////////
+
+This construction might be uesd like if/else
+условие, ?, исходы при тру и фолс
+
+1)let isLocked = false;
+isLocked ? console.log('You will need a key to open the door.') : console.log('You will not need a key to open the door.');
+
+2)let isCorrect = true;
+isCorrect ? console.log('Correct!') : console.log('Incorrect!');
+
+3)let favoritePhrase = 'Love That!';
+favoritePhrase === 'Love That!' ? console.log('I love that!') : console.log("I don't love that!");
+///////////////////////////
+
+elif construction
+
+let season = 'summer';
+
+if (season === 'spring') {
+  console.log('It\'s spring! The trees are budding!');
+} else if (season === 'winter') {
+  console.log('It\'s winter! Everything is covered in snow.');
+} else if (season === 'fall') {
+  console.log('It\'s fall! Leaves are falling!');
+} else if (season === 'summer') {
+  console.log('It\'s sunny and warm because it\'s summer!');
+} else {
+  console.log('Invalid season.');
+}
+////////////////////////////
+
+SWITCH:
+
+let groceryItem = 'papaya';
+ 
+switch (groceryItem) {
+  case 'tomato':
+    console.log('Tomatoes are $0.49');
+    break;
+  case 'lime':
+    console.log('Limes are $1.49');
+    break;
+  case 'papaya':
+    console.log('Papayas are $1.29');
+    break;
+  default: - important! (if we cant find current item, this line use a default value)
+    console.log('Invalid item');
+    break;
+}
+//////////////////////////////////
+let userName = '';
+
+userName ? console.log(`Hello, ${userName}!`) : console.log('Hello');
+
+const userQuestion = 'Will I become a werewolf tonight?';
+console.log(`User asked: ${userQuestion}`);
+
+const randomNumber = Math.floor(Math.random() * 8);
+let eightBall = '';
+switch (randomNumber){
+  case 0:
+    eightBall = 'It is certain';
+    break;
+  case 1:
+    eightBall = 'It is decidedly so';
+    break;
+  case 2:
+    eightBall = 'Reply hazy try again';
+    break;
+  case 3:
+    eightBall = 'Cannot predict now';
+    break;
+  case 4:
+    eightBall = 'Do not count on it';
+    break;
+  case 5:
+    eightBall = 'My sources say no';
+    break;
+  case 6:
+    eightBall = 'Outlook not so good';
+    break;
+  case 7:
+    eightBall = 'Signs point to yes';
+    break;
+}
+console.log(eightBall)
+//////////////////////////////////////////
