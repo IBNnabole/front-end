@@ -202,3 +202,71 @@ switch (randomNumber){
 }
 console.log(eightBall)
 //////////////////////////////////////////
+
+FUNCTIONS:
+
+function sayThanks(){ 
+  console.log('Thank you for your purchase! We appreciate your business.'); - the body
+}
+sayThanks(); - to print result of our function
+//////////
+function sayThanks(name) {
+  console.log('Thank you for your purchase '+ name + '! We appreciate your business.');
+}
+
+sayThanks('Cole');
+/////////
+function greeting (name = 'stranger') {
+  console.log(`Hello, ${name}!`)
+}
+ 
+greeting('Nick') // Output: Hello, Nick!
+greeting() // Output: Hello, stranger!
+/////////
+function monitorCount(rows, columns){
+  return rows*columns;
+}
+const numOfMonitors = monitorCount(5,4);
+console.log(numOfMonitors)
+////////
+function monitorCount(rows, columns) {
+  return rows * columns;
+}
+function costOfMonitors(rows, columns){
+  return monitorCount(rows, columns) * 200;
+}
+const totalCost = costOfMonitors(5,4);
+console.log(totalCost);
+////////
+const plantNeedsWater = function(day){
+  if (day === 'Wednesday'){
+    return true;
+  } else {
+    return false;
+  }
+};
+
+console.log(plantNeedsWater('Tuesday')); // output false
+////////
+const plantNeedsWater = (day) => { // if we dont want to write word function, we can use => after arguments.
+  if (day === 'Wednesday') {
+    return true;
+  } else {
+    return false;
+  }
+}; // same function like previos
+////////
+this one like 2 previos:
+
+const plantNeedsWater = day => day === 'Wednesday' ? true : false;
+////////
+if we have function like this, we can use 2) view
+1)
+const squareNum = (num) => {
+  return num * num;
+};
+2)
+const squareNum = num => num * num;
+
+But if we have 0 or 2 and more, we have to use (argument1...)
+////////
