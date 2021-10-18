@@ -270,3 +270,156 @@ const squareNum = num => num * num;
 
 But if we have 0 or 2 and more, we have to use (argument1...)
 ////////
+ARRAYS:
+
+const hobbies = ['qwe', 'asd', 'zxc'];
+console.log(hobbies);
+///////
+
+const famousSayings = ['Fortune favors the brave.', 'A joke is a very serious thing.', 'Where there is love there is life.'];
+const listItem = famousSayings[0];
+console.log(listItem);
+console.log(famousSayings[2]);
+//////
+
+let condiments = ['Ketchup', 'Mustard', 'Soy Sauce', 'Sriracha'];
+const utensils = ['Fork', 'Knife', 'Chopsticks', 'Spork'];
+
+condiments[0] = 'Mayo';
+console.log(condiments);
+condiments = ['Mayo'];
+console.log(condiments);
+
+utensils[3] = 'Spoon';
+console.log(utensils);
+utensils = ['qwe'];
+console.log(utensils); // error because of CONST
+//////
+
+const objectives = ['Learn a new languages', 'Read 52 books', 'Run a marathon']; //length
+console.log(objectives.length);
+//////
+
+const itemTracker = ['item 0', 'item 1', 'item 2'];
+itemTracker.push('item 3', 'item 4');
+console.log(itemTracker);  // Output: ['item 0', 'item 1', 'item 2', 'item 3', 'item 4'];
+//////
+
+const newItemTracker = ['item 0', 'item 1', 'item 2'];
+const removed = newItemTracker.pop();
+ 
+console.log(newItemTracker);    // Output: [ 'item 0', 'item 1' ]
+console.log(removed);    // Output: item 2
+//////
+
+const groceryList = ['orange juice', 'bananas', 'coffee beans', 'brown rice', 'pasta', 'coconut oil', 'plantains'];
+
+groceryList.shift(); // delete first item
+console.log(groceryList);
+
+groceryList.unshift('popcorn'); // add item in the begining of the array
+console.log(groceryList);
+
+console.log(groceryList.slice(1, 4)); // remove items by ids first - start id, sec value - end id + 1. But orig array will be the same.
+console.log(groceryList);
+
+const pastaIndex = groceryList.indexOf('pasta'); // give us index of choosen item
+console.log(pastaIndex); 
+
+secretMessage.splice(6,12, 'know'); - уже удаляет из массива эти индексы и заменяет их на 3е значение, тут вместо 5 он ставит 1.
+console.log(secretMessage.join(' ')); - соединяем с пробелом все эл. массива
+
+const countries = ['Japan', 'Denmark', 'Mexico', 'Morocco'];
+countries.shift();
+console.log(countries); // ['Denmark', 'Mexico', 'Morocco']
+//////
+
+const flowers = ['peony', 'daffodil', 'marigold'];
+ 
+const concept = ['arrays', 'can', 'be', 'mutated'];
+
+function changeArr(arr){
+  arr[3] = 'MUTATED';
+}
+changeArr(concept);
+console.log(concept); // [ 'arrays', 'can', 'be', 'MUTATED' ]
+
+function removeElement(newArr){
+  newArr.pop();
+}
+removeElement(concept);
+console.log(concept); // [ 'arrays', 'can', 'be' ]
+///////
+
+Nested Arrays <----------------------------
+
+const nestedArr = [[1], [2, 3]];
+ 
+console.log(nestedArr[1]); // Output: [2, 3]
+console.log(nestedArr[1][0]); // Output: 2
+/////////
+
+LOOPS:
+
+FOR:
+// usual for
+for (let counter = 0; counter < 4; counter++) {
+  console.log(counter);
+}
+
+// reverse for
+for (let counter = 3; counter >= 0; counter--){
+  console.log(counter);
+}
+
+// loop with array
+
+const animals = ['Grizzly Bear', 'Sloth', 'Sea Lion'];
+for (let i = 0; i < animals.length; i++){
+  console.log(animals[i]);
+}
+
+// Nested Loops
+
+let bobsFollowers = ['Joe', 'Marta', 'Sam', 'Erin'];
+let tinasFollowers = ['Sam', 'Marta', 'Elle'];
+let mutualFollowers = [];
+
+for (let i = 0; i < bobsFollowers.length; i++) {
+  for (let j = 0; j < tinasFollowers.length; j++) {
+    if (bobsFollowers[i] === tinasFollowers[j]) {
+      mutualFollowers.push(bobsFollowers[i]);
+    }
+  }
+};
+
+// WHILE
+
+const cards = ['diamond', 'spade', 'heart', 'club'];
+
+let currentCard;
+while (currentCard !== 'spade') {
+  currentCard = cards[Math.floor(Math.random() * 4)];
+  console.log(currentCard);
+}
+
+// do...while
+
+let cupsOfSugarNeeded = 2;
+let cupsAdded = 0;
+
+do{ - do always do this tasks ones even if the condition is false
+  cupsAdded++;
+  console.log(cupsAdded);
+} while (cupsAdded < cupsOfSugarNeeded);
+
+// break
+
+const rapperArray = ["Lil' Kim", "Jay-Z", "Notorious B.I.G.", "Tupac"];
+
+for (let i = 0; i < rapperArray.length; i++){
+  console.log(rapperArray[i]);
+  if (rapperArray[i] === "Notorious B.I.G."){
+    break;
+  }
+}
