@@ -1,0 +1,255 @@
+to start program:
+node 'prog name.js'
+console.log() - print in console
+console.assert() - print in console if value is false
+console.table() - print table in console
+
+const petsArray = ['dog', 'cat', 'bird', 'monkey'];
+
+console.log(petsArray);
+console.table(petsArray);
+console.assert(petsArray.length > 5);            
+//
+[ 'dog', 'cat', 'bird', 'monkey' ]
+┌─────────┬──────────┐
+│ (index) │  Values  │
+├─────────┼──────────┤
+│    0    │  'dog'   │
+│    1    │  'cat'   │
+│    2    │  'bird'  │
+│    3    │ 'monkey' │
+└─────────┴──────────┘
+Assertion failed //
+
+if (process.env.NODE_ENV === 'development'){
+  console.log('Testing! Testing! Does everything work?');
+}
+
+process.memoryUsage() 
+// 
+{ rss: 26247168,
+  heapTotal: 5767168,
+  heapUsed: 3573032,
+  external: 8772 }//
+
+process.memoryUsage().heapUsed вернет число, представляющее, сколько байтов памяти использует текущий процесс.
+process.argvСвойство содержит массив значений командной строки
+
+node myProgram.js testing several features
+console.log(process.argv[3]); // Prints 'several'
+
+let initialMemory = process.memoryUsage().heapUsed; // memory in the beggining
+let word = process.argv[2]; // took 2-nd word into word
+
+console.log(`Your word is ${word}`)
+
+// Create a new array
+let wordArray = [];
+
+// Loop 1000 times, pushing into the array each time 
+for (let i = 0; i < 1000; i++){
+  wordArray.push(`${word} count: ${i}`)
+};
+
+console.log(`Starting memory usage: ${initialMemory}. \nCurrent memory usage: ${process.memoryUsage().heapUsed}. \nAfter using the loop to add elements to the array, the process is using ${process.memoryUsage().heapUsed - initialMemory} more bytes of memory.`);
+//  
+const os = require('os'); // to add this module into our prog
+
+os.type() - вернуть операционную систему компьютера.
+os.arch() - вернуть архитектуру процессора операционной системы.
+os.networkInterfaces - вернуть информацию о сетевых интерфейсах компьютера, например IP и MAC-адрес.
+os.homedir() - чтобы вернуть домашний каталог текущего пользователя.
+os.hostname() - чтобы вернуть имя хоста операционной системы.
+os.uptime() - вернуть время безотказной работы системы в секундах.
+
+
+const os = require('os');
+ 
+const local = {  
+  'Home Directory': os.homedir(),    
+  'Operating System': os.type(),
+  'Last Reboot': os.uptime()
+}
+
+const os = require('os');
+const server = {
+  'type': os.type(),
+  'architecture': os.arch(),
+  'uptime': os.uptime()
+};
+console.log(server); //{ type: 'Linux', architecture: 'x64', uptime: 3498.13 }
+//  
+
+const util = require('util');
+ 
+const today = new Date();
+const earthDay = 'April 22, 2022';
+ 
+console.log(util.types.isDate(today)); // true
+console.log(util.types.isDate(earthDay)); // false
+//
+
+const getUserPromise = util.promisify(getUser);
+ 
+getUserPromise(id)
+  .then((user) => {
+      console.log(`User found! Their nickname is: ${user.nickname}`);
+  })
+  .catch((error) => {
+      console.log('User not found', error);
+  });
+ 
+getUser(1) // -> `User not found`
+getUser(5) // -> `User found! Their nickname is: Teddy`
+/////////////////
+
+// Require in trails module from trails.js
+const trails = require('./trails.js');
+// Require in util module here
+const util = require('util');
+// Simulate database call to search trails module for specified trail
+const getTrailDistance = (trail, callback) => {
+  return setTimeout(() => {
+    if (trails.hasOwnProperty(trail)) {    
+      const foundTrail = trails[trail];    
+      callback(null, foundTrail)
+    } else {
+      callback(new Error('Trail not found!'))
+    }
+  }, 1000);
+}
+
+// Callback function to send an error in the case of an error, or to handle trail data if a trail was found successfully.
+function callback (error, trailData) {
+  if (error) {
+    console.error(error.message)
+    process.exit(1)
+  } else {
+    const mi = trailData.miles;   
+    const nickname = trailData.nickname;
+    console.log(`The ${nickname} is ${mi} miles long!`)
+  }
+}
+
+
+getTrailDistance('North Country', callback)
+
+// Promisfy below!
+const getTrailDistancePromise = util.promisify(getTrailDistance);
+
+getTrailDistancePromise('North Country')
+  .then((foundTrail) => {
+    const nickname = foundTrail.nickname;
+    const mi = foundTrail.miles;
+    console.log(`The ${nickname} is ${mi} miles long!`);
+  })
+  .catch((error) => {
+    console.log('Trail not found!', Error);
+  })
+//////////////////////////
+Реализация модулей в Node
+
+/* water-limits.js */
+function celsiusToFahrenheit(celsius) {
+  return celsius * (9/5) + 32;
+}
+ 
+const freezingPointC = 0;
+const boilingPointC = 100;
+ 
+const freezingPointF = celsiusToFahrenheit(freezingPointC);
+const boilingPointF = celsiusToFahrenheit(boilingPointC);
+ 
+console.log(`The freezing point of water in Fahrenheit is ${freezingPointF}`);
+console.log(`The boiling point of water in Fahrenheit is ${boilingPointF}`);
+///
+/* celsius-to-fahrenheit.js */
+function celsiusToFahrenheit(celsius) {
+    return celsius * (9/5) + 32;
+}
+ 
+const celsiusInput = process.argv[2]; // Get the 3rd input from the argument list
+const fahrenheitValue = celsiusToFahrenheit(celsiusInput);
+///
+/* converters.js */
+function celsiusToFahrenheit(celsius) {
+  return celsius * (9/5) + 32;
+}
+ 
+module.exports.celsiusToFahrenheit = celsiusToFahrenheit;
+ 
+module.exports.fahrenheitToCelsius = function(fahrenheit) {
+  return (fahrenheit - 32) * (5/9);
+};
+///////////////////////
+require()
+/* water-limits.js */
+const converters = require('./converters.js');
+ 
+const freezingPointC = 0;
+const boilingPointC = 100;
+ 
+const freezingPointF = converters.celsiusToFahrenheit(freezingPointC);
+const boilingPointF = converters.celsiusToFahrenheit(boilingPointC);
+ 
+console.log(`The freezing point of water in Fahrenheit is ${freezingPointF}`);
+console.log(`The boiling point of water in Fahrenheit is ${boilingPointF}`);
+
+
+/* celsius-to-fahrenheit.js */
+const { celsiusToFahrenheit } = require('./converters.js');
+ 
+const celsiusInput = process.argv[2]; 
+const fahrenheitValue = celsiusToFahrenheit(input);
+ 
+console.log(`${celsiusInput} degrees Celsius = ${fahrenheitValue} degrees Fahrenheit`);
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
