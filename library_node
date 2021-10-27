@@ -203,12 +203,97 @@ const celsiusInput = process.argv[2];
 const fahrenheitValue = celsiusToFahrenheit(input);
  
 console.log(`${celsiusInput} degrees Celsius = ${fahrenheitValue} degrees Fahrenheit`);
+
+
+///////
+Каждый экземпляр отправителя событий имеет .on()метод, который назначает функцию обратного вызова прослушивателя именованному событию. 
+.on()Метод принимает в качестве своего первого аргумента имя события в виде строки, а в качестве второго аргумента, функции обратного вызова слушателя.
+
+У каждого экземпляра генератора событий также есть .emit() метод, который объявляет о наступлении именованного события. 
+.emit()Метод принимает в качестве своего первого аргумента имя события в виде строки, а в качестве второго аргумента, данные , 
+которые должны быть переданы в функцию обратного вызова слушателя.
+
+let newUserListener = (data) => {
+  console.log(`We have a new user: ${data}.`);
+};
+ 
+// Assign the newUserListener function as the listener callback for 'new user' events
+myEmitter.on('new user', newUserListener)
+ 
+// Emit a 'new user' event
+myEmitter.emit('new user', 'Lily Pad') //newUserListener will be invoked with 'Lily Pad'
   
-  
-  
-  
-  
-  
+let events = require('events');
+
+let listenerCallback = (data) => {
+    console.log('Celebrate ' + data);
+}
+
+let myEmitter = new events.EventEmitter();
+
+myEmitter.on('celebration', listenerCallback);
+myEmitter.emit('celebration', 'good times, come on!');
+
+/////////////////////////////////////// Пользовательский ввод / вывод
+
+В Node мы также можем получать ввод от пользователя через терминал, используя stdin.on() метод processобъекта:
+
+process.stdin.on('data', (userInput) => {
+  let input = userInput.toString()
+  console.log(input)
+});
+
+
+let {testNumber} = require('./game.js');
+
+process.stdout.write("I'm thinking of a number from 1 through 10. What do you think it is? \n(Write \"quit\" to give up.)\n\nIs the number ... ");
+
+let playGame = (userInput) => {
+  let input = userInput.toString().trim();
+	testNumber(input);
+};
+
+process.stdin.on('data', playGame);
+
+/////////////////////////////////// Модуль ошибок
+
+const errorFirstCallback = (err, data)  => {
+  if (err) {
+    console.log(`There WAS an error: ${err}`);
+  } else {
+    // err was falsy
+    console.log(`There was NO error. Event data: ${data}`);
+  }
+}
+
+const api = require('./api.js');
+
+// An error-first callback
+let errorFirstCallback = (err, data) => {
+  if (err) {
+    console.log(`Something went wrong. ${err}\n`);
+  } else {
+    console.log(`Something went right. Data: ${data}\n`);
+  }
+};
+
+api.errorProneAsyncApi('problematic input', errorFirstCallback);
+
+/////////////////////////////// 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
   
   
